@@ -1,0 +1,93 @@
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  overflow: hidden;
+  background: #f8f4e9; /* 改为米色背景 */
+  font-family: "Noto Serif SC", serif; /* 使用衬线字体 */
+}
+
+.list {
+  position: absolute;
+  background: #faf8f2;
+  top: 80px;
+  bottom: 0;
+  width: 100%;
+  padding: 10px 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.item {
+  font-size: 30px; /* 减小字体大小 */
+  padding: 15px 10px;
+  color: #5a4a3a; /* 深棕色文字 */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.history {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* 防止内容撑开 */
+  margin: 0 auto;
+  gap: 10px;
+  max-width: 730px; /* 整个网格的最大宽度 */
+  overflow: hidden; /* 隐藏网格溢出部分 */
+}
+
+.cross {
+  font-size: 30px;
+}
+
+.historyTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px 0 30px;
+}
+
+.historyTitle h1 {
+  margin-bottom: 15px;
+  padding-left: 20px;
+}
+
+.deleteIcon {
+  font-size: 40px;
+}
+
+.deleteSpan {
+  display: flex;
+  justify-content: space-between;
+  font-size: 30px;
+}
+
+.deleteSpan span:nth-child(1) {
+  color: #666;
+  padding-right: 10px;
+}
+
+.deleteSpan span:nth-child(2) {
+  padding-left: 10px;
+}
+
+/* 强制所有字体变为白色 */
+:global(.dark) * {
+  color: var(--text-color) !important;
+}
+
+/* 强制所有元素的背景变黑 */
+:global(.dark) .container,
+:global(.dark) .list {
+  background-color: var(--background-color) !important;
+}
+
+

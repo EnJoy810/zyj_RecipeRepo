@@ -1,0 +1,82 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  padding: 12px 16px;
+  background-color: #faf7f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.sticky {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 120px;
+  min-width: 0;
+}
+
+.arrowleft {
+  font-size: 45px;
+  color: #666;
+  margin: -10px 10px;
+}
+
+/* 输入框样式 */
+.input {
+  width: 550px;
+  min-width: 0;
+  padding: 16px 20px 16px 60px; /* 调整上下padding使输入框更高 */
+  font-size: 30px; /* 调整实际输入文字大小 */
+  border: 1px solid #e0ded9;
+  border-radius: 24px;
+  background-color: #ffffff;
+  color: #333;
+  box-sizing: border-box; /* 确保padding包含在宽度内 */
+  height: 60px; /* 固定高度 */
+}
+
+/* 搜索图标 */
+.icon {
+  position: absolute;
+  left: 95px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 35px; /* 调整为更合适的图标大小 */
+  color: #666;
+}
+
+/* 输入框占位符文字样式 */
+.input::placeholder {
+  font-size: 30px; /* 调整为与图标协调的大小 */
+  color: #999;
+  line-height: normal; /* 确保垂直居中 */
+  vertical-align: middle;
+}
+
+.search {
+  font-size: 30px;
+  color: #666;
+  margin: 0 20px;
+}
+
+.close {
+  position: absolute;
+  right: 140px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 30px;
+  color: #666;
+}
+
+
+/* 强制所有元素的背景变黑 */
+:global(.dark) .wrapper{
+  background-color: var(--background-color) !important;
+}
+
+
+:global(.dark) .input{
+  background-color: #323131ff !important;
+}
+

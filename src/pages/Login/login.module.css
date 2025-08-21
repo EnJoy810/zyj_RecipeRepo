@@ -1,0 +1,234 @@
+/* 基础样式 - 移动端适配 */
+.container {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Noto Serif SC", "Microsoft YaHei", serif;
+  font-size: 16px; /* 设置基准字体大小 */
+}
+
+/* 背景样式 - 美团黄色系渐变 */
+.loginContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fff8e1 0%, #fff3c4 50%, #ffe082 100%);
+  position: relative;
+  overflow: hidden;
+  padding: 0.4rem; /* 30px */
+}
+
+/* 食谱本装饰元素 - 移动端缩小 */
+.decorationBook {
+  position: absolute;
+  width: 1.6rem; /* 120px */
+  height: 2rem; /* 150px */
+  right: 5%;
+  top: 10%;
+  background-color: #FF8F00;
+  border-radius: 0.0667rem 0.2rem 0.2rem 0.0667rem; /* 5px 15px 15px 5px */
+  transform: rotate(15deg);
+  box-shadow: -0.0667rem 0.0667rem 0.2rem rgba(0, 0, 0, 0.2); /* -5px 5px 15px */
+  opacity: 0.8;
+}
+
+.decorationBook::before {
+  content: "";
+  position: absolute;
+  top: 0.1333rem; /* 10px */
+  left: 0.1333rem; /* 10px */
+  right: 0.1333rem; /* 10px */
+  bottom: 0.1333rem; /* 10px */
+  background: linear-gradient(to right, #FFD100 0%, #FF8F00 100%);
+  border-radius: 0.04rem 0.1333rem 0.1333rem 0.04rem; /* 3px 10px 10px 3px */
+}
+
+.decorationBook::after {
+  content: "菜谱";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff8e1;
+  font-size: 0.6rem; /* 45px - 调小字体适应两个字 */
+  font-weight: bold;
+}
+
+/* 勺子装饰元素 - 移动端缩小 */
+.decorationPen {
+  position: absolute;
+  width: 1rem; /* 75px */
+  height: 0.1333rem; /* 10px */
+  left: 10%;
+  bottom: 15%;
+  background: linear-gradient(90deg, #666 0%, #888 50%, #666 100%);
+  transform: rotate(-30deg);
+  opacity: 0.8;
+  border-radius: 0 0.0667rem 0.0667rem 0; /* 勺子柄的圆角 */
+}
+
+.decorationPen::before {
+  content: "";
+  position: absolute;
+  width: 0.2667rem; /* 20px - 勺子头 */
+  height: 0.2667rem; /* 20px */
+  left: -0.2667rem; /* -20px */
+  background: linear-gradient(135deg, #FF8F00 0%, #FFD100 100%);
+  border-radius: 50%; /* 圆形勺子头 */
+  border: 0.0267rem solid #666; /* 2px 边框 */
+}
+
+/* 登录卡片样式 - 移动端适配 */
+.loginCard {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 0.2rem; /* 15px */
+  padding: 0.5333rem; /* 40px */
+  width: 100%;
+  max-width: 6rem; /* 450px */
+  box-shadow: 0 0.1333rem 0.4rem rgba(0, 0, 0, 0.1); /* 0 10px 30px */
+  position: relative;
+  z-index: 1;
+  backdrop-filter: blur(0.0667rem); /* 5px */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.loginHeader {
+  text-align: center;
+  margin-bottom: 0.4rem; /* 30px */
+}
+
+.loginHeader h2 {
+  color: #FF8F00;
+  font-size: 0.5333rem; /* 40px */
+  margin-bottom: 0.1333rem; /* 10px */
+}
+
+.loginHeader p {
+  color: #FFA000;
+  font-size: 0.24rem; /* 18px */
+}
+
+/* 表单样式 */
+.loginForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.formGroup {
+  margin-bottom: 0.2667rem; /* 20px */
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 0.1067rem; /* 8px */
+  color: #FF8F00;
+  font-size: 0.24rem; /* 18px */
+}
+
+.formInput {
+  width: 100%;
+  padding: 0.16rem 0.2rem; /* 12px 15px */
+  border: 1px solid #FFD100;
+  border-radius: 0.1067rem; /* 8px */
+  background-color: #fffbf0;
+  font-size: 0.2133rem; /* 16px */
+  transition: all 0.3s ease;
+}
+
+.formInput:focus {
+  outline: none;
+  border-color: #FF8F00;
+  box-shadow: 0 0 0 0.04rem rgba(255, 143, 0, 0.2); /* 3px */
+}
+
+/* 表单选项 */
+.formOptions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.3333rem; /* 25px */
+}
+
+.rememberMe {
+  display: flex;
+  align-items: center;
+}
+
+.rememberMe input {
+  margin-right: 0.1067rem; /* 8px */
+}
+
+.rememberMe label {
+  color: #FFA000;
+  font-size: 0.24rem; /* 18px */
+}
+
+.forgotPassword {
+  color: #FF8F00;
+  text-decoration: none;
+  font-size: 0.24rem; /* 18px */
+  transition: color 0.3s ease;
+}
+
+.forgotPassword:hover {
+  color: #FFD100;
+  text-decoration: underline;
+}
+
+/* 登录按钮 */
+.loginButton {
+  background: linear-gradient(to right, #FF8F00 0%, #FFD100 100%);
+  color: white;
+  border: none;
+  padding: 0.16rem; /* 12px */
+  border-radius: 0.1067rem; /* 8px */
+  font-size: 0.2667rem; /* 20px */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 0.2667rem; /* 20px */
+}
+
+.loginButton:hover {
+  background: linear-gradient(to right, #FFD100 0%, #FF8F00 100%);
+  transform: translateY(-0.0267rem); /* -2px */
+  box-shadow: 0 0.0667rem 0.2rem rgba(255, 143, 0, 0.3); /* 0 5px 15px */
+}
+
+/* 页脚 */
+.loginFooter {
+  text-align: center;
+  color: #FFA000;
+  font-size: 0.24rem; /* 18px */
+}
+
+.registerLink {
+  color: #FF8F00;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.registerLink:hover {
+  color: #FFD100;
+  text-decoration: underline;
+}
+
+/* 媒体查询 - 针对小屏幕进一步调整 */
+@media (max-width: 320px) {
+  .loginCard {
+    padding: 0.4rem; /* 30px */
+  }
+  
+  .loginHeader h2 {
+    font-size: 0.48rem; /* 36px */
+  }
+  
+  .loginHeader p,
+  .formGroup label,
+  .rememberMe label,
+  .forgotPassword,
+  .loginFooter {
+    font-size: 0.2133rem; /* 16px */
+  }
+}

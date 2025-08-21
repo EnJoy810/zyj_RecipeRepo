@@ -1,0 +1,9 @@
+/* 还原 BookStack 简洁风格，使用美团黄色系 */
+.tabbar {
+  --rv-tabbar-background-color: #FFF8E1;
+}
+
+:global(.dark) .tabbar {
+  --rv-tabbar-background-color: #323131ff !important;
+  --rv-tabbar-item-active-background-color: #121212 !important;
+}
