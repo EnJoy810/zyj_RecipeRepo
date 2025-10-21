@@ -3,7 +3,7 @@ import { create } from "zustand";
 import { getSuggestList } from "@/api/search";
 
 const useSearchStore = create((set, get) => {
-  // 初始数据格式改为 { text: string, timestamp: number }[]
+ 
   const searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [
     { text: "宫保鸡丁怎么做", timestamp: 1 },
     { text: "红烧肉的做法", timestamp: 2 },

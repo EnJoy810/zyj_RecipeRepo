@@ -98,16 +98,3 @@ textarea {
   --text-color: #ffffff;
 }
 
-/* 强制所有元素的背景变黑 */
-/* .dark * {
-  background-color: var(--background-color) !important;
-  color: var(--text-color) !important;
-} */
-
-/* 特殊处理输入框（可选，使其比纯黑稍亮） */
-/* .dark input,
-.dark textarea,
-.dark select {
-  background-color: #1e1e1e !important;
-} */
-

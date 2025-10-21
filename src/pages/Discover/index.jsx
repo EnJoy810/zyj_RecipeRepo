@@ -8,18 +8,15 @@ import { Search } from "@react-vant/icons";
 
 const Discover = () => {
   const navigate = useNavigate();
-  // 修改：使用 useRecipeStore
   const { recipes, fetchMore, isLoading, isRefreshing, refreshRecipes } =
     useRecipeStore();
 
-  // 修改：更新页面标题
   useTitle("发现食谱");
 
   const handleClick = () => {
     navigate("/search");
   };
 
-  // 修改：调用 refreshRecipes
   const onRefresh = async () => {
     await refreshRecipes();
   };
@@ -31,7 +28,6 @@ const Discover = () => {
           <Search className={styles.icon} />
           <input
             type="text"
-            // 修改：更新搜索框提示
             placeholder="搜菜谱、搜食材"
             className={styles.input}
             onClick={handleClick}
@@ -48,7 +44,6 @@ const Discover = () => {
         loosingText="释放刷新"
       >
         <div>
-          {/* 修改：将 recipes 传递给 Waterfall */}
           <Waterfall recipes={recipes} fetchMore={fetchMore} loading={isLoading} />
         </div>
       </PullRefresh>

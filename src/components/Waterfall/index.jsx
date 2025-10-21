@@ -1,20 +1,20 @@
 import styles from "./waterfall.module.css";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import RecipeCard from "@/components/RecipeCard"; // 修改：引入 RecipeCard
+import RecipeCard from "@/components/RecipeCard"; 
 
 const Waterfall = (props) => {
   const loader = useRef(null);
   const [columns, setColumns] = useState([[], []]);
   const [heights, setHeights] = useState([0, 0]);
-  const { recipes, fetchMore, loading } = props; // 修改：books -> recipes
+  const { recipes, fetchMore, loading } = props; 
   const navigate = useNavigate();
 
+  // 动态计算瀑布流每列的高度，当 recipes 数据变化时触发，按高度分配到两列
   useEffect(() => {
     const newColumns = [[], []];
     let newHeights = [0, 0];
 
-    // 修改：处理 recipes
     recipes.forEach((recipe) => {
       const estimatedHeight = recipe.height || 300;
       if (newHeights[0] <= newHeights[1]) {
@@ -28,8 +28,9 @@ const Waterfall = (props) => {
 
     setColumns(newColumns);
     setHeights(newHeights);
-  }, [recipes]); // 修改：依赖项 books -> recipes
+  }, [recipes]); 
 
+  // 下拉/滚动加载更多的懒加载，使用 IntersectionObserver 监听 loader 是否进入视口
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting && !loading) {
@@ -43,13 +44,13 @@ const Waterfall = (props) => {
     };
   }, [loading]);
 
+  // 事件委托处理函数，绑定在父容器 columns 上，处理每张卡片点击跳转
   const handleClickNavigate = (e) => {
-    // 修改：更新 class name
     const card = e.target.closest(".recipe-card-wrapper"); 
     if (!card) return;
 
     const id = card.dataset.id;
-    // 修改：在 recipes 中查找
+    // 在 recipes 中查找
     const recipe = recipes.find((recipe) => recipe.id === id); 
     navigate(`/detail/${id}`, { state: { recipe } }); // 修改：传递 recipe
   };
@@ -58,24 +59,24 @@ const Waterfall = (props) => {
     <div className={styles.wrapper}>
       <div className={styles.columns} onClick={handleClickNavigate}>
         <div className={styles.column}>
-          {columns[0].map((recipe) => ( // 修改：book -> recipe
+          {columns[0].map((recipe) => ( 
             <div
               key={recipe.id}
               data-id={recipe.id}
-              className="recipe-card-wrapper" // 修改：class name
+              className="recipe-card-wrapper" 
             >
-              <RecipeCard {...recipe} /> {/* 修改：使用 RecipeCard */}
+              <RecipeCard {...recipe} /> 
             </div>
           ))}
         </div>
         <div className={styles.column}>
-          {columns[1].map((recipe) => ( // 修改：book -> recipe
+          {columns[1].map((recipe) => ( 
             <div
               key={recipe.id}
               data-id={recipe.id}
-              className="recipe-card-wrapper" // 修改：class name
+              className="recipe-card-wrapper" 
             >
-              <RecipeCard {...recipe} /> {/* 修改：使用 RecipeCard */}
+              <RecipeCard {...recipe} /> 
             </div>
           ))}
         </div>

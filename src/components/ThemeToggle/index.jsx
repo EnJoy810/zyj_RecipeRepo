@@ -1,4 +1,3 @@
-// src/components/ThemeToggle.js
 import { useState, useEffect } from 'react';
 import { toggleTheme } from '@/utils/theme';
 import styles from './themeToggle.module.css'
