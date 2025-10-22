@@ -126,11 +126,19 @@ export const setupMockInterceptor = () => {
       return response;
     },
     async (error) => {
-      // 如果是网络错误或 404，尝试使用 Mock 数据
+      // 如果是网络错误、404、405 或其他 HTTP 错误，尝试使用 Mock 数据
       const { config, response } = error;
+
+      console.log('[Mock Interceptor] Response error:', {
+        url: config?.url,
+        method: config?.method?.toUpperCase(),
+        status: response?.status,
+        message: error.message
+      });
 
       if (config?.url?.startsWith('/api/') && (!response || response.status === 404 || response.status === 405)) {
         const key = `${config.method?.toUpperCase()}:${config.url}`;
+        console.log('[Mock Interceptor] Checking for mock handler:', key);
         const mockHandler = mockResponses[key];
 
         if (mockHandler) {
