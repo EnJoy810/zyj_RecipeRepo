@@ -2,6 +2,7 @@ import { create } from "zustand";
 import { doLogin } from "@/api/user";
 import { Dialog } from "react-vant";
 import { persist } from "zustand/middleware"; // 导入持久化中间件
+import { getUserInfo } from "@/api/localAuth";
 
 const useUserStore = create(
   persist(
@@ -15,16 +16,28 @@ const useUserStore = create(
           Dialog.alert({ message: `${res.message}` });
           return res.message;
         }
-        const { token, data: user } = res; // 解构出token和user信息
-        localStorage.setItem("token", token); // 存储token到localStorage中
+        const { data: user } = res; // 解构出user信息 (token已在localAuth中处理)
         set({
           // 更新状态
           user, // 用户信息
           isLogin: true, // 是否登录
         });
       },
+
+      // 初始化登录状态
+      initAuth: () => {
+        const userInfo = getUserInfo();
+        if (userInfo) {
+          set({
+            user: userInfo,
+            isLogin: true,
+          });
+        }
+      },
       logout: () => {
-        localStorage.removeItem("token"); // 移除token
+        // 清除所有认证信息
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
         set({
           // 更新状态
           user: null, // 用户信息
