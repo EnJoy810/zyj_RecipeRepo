@@ -1,6 +1,16 @@
 import axios from 'axios'
-// 配置axios的baseURL
-axios.defaults.baseURL = "http://localhost:5173/api"
+
+// 根据环境配置baseURL
+const getBaseURL = () => {
+  // 开发环境使用本地Mock服务
+  if (import.meta.env.DEV) {
+    return "http://localhost:5173/api"
+  }
+  // 生产环境使用相对路径，自动请求当前域名下的API
+  return "/api"
+}
+
+axios.defaults.baseURL = getBaseURL()
 // interceptors: 拦截器  
 axios.interceptors.request.use((config) => {
     // 从localStorage中获取token
