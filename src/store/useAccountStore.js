@@ -3,7 +3,7 @@ import { persist } from "zustand/middleware"; // 导入持久化中间件
 
 const useAccountStore = create(
   persist(
-    (set, get) => ({
+    (set) => ({
       nickname: "哈基米",
       level: "5级",
       slogan: "炸鸡可乐是绝配",

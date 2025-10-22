@@ -113,7 +113,7 @@ const Chat = () => {
           );
         }
       );
-    } catch (error) {
+    } catch {
       // 错误处理
       Toast.fail({
         message: "发送失败，请重试",

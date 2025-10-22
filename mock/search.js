@@ -5,7 +5,7 @@ export default [
         url: '/api/search',
         method: 'get',
         timeout: 1000,
-        response: (req, res) => {
+        response: (req) => {
             const keyword = req.query.keyword; // 获取关键字
             let num = Math.floor(Math.random() * 10); // 随机生成0-9的数字
             let list = [];

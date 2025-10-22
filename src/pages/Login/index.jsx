@@ -23,7 +23,7 @@ const Login = () => {
       await login({username, password});
       // 登录成功后跳转到首页
       navigate('/');
-    } catch (error) {
+    } catch {
       // 处理登录失败的情况
       Dialog.alert({message: '登录失败，请检查用户名和密码'});
     }

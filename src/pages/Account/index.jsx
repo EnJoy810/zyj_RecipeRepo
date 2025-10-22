@@ -58,7 +58,7 @@ const Account = () => {
         const newAvatar = await generateAvatar(text);
         updateAvatar(newAvatar);
         Toast.success("头像生成成功！");
-      } catch (error) {
+      } catch {
         Toast.fail("生成失败，请重试");
       } finally {
         setIsGenerating(false); // 无论成功失败都结束加载

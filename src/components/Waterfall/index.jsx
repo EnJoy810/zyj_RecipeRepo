@@ -6,7 +6,6 @@ import RecipeCard from "@/components/RecipeCard";
 const Waterfall = (props) => {
   const loader = useRef(null);
   const [columns, setColumns] = useState([[], []]);
-  const [heights, setHeights] = useState([0, 0]);
   const { recipes, fetchMore, loading } = props; 
   const navigate = useNavigate();
 
@@ -27,7 +26,6 @@ const Waterfall = (props) => {
     });
 
     setColumns(newColumns);
-    setHeights(newHeights);
   }, [recipes]); 
 
   // 下拉/滚动加载更多的懒加载，使用 IntersectionObserver 监听 loader 是否进入视口
@@ -42,7 +40,7 @@ const Waterfall = (props) => {
     return () => {
       observer.disconnect();
     };
-  }, [loading]);
+  }, [loading, fetchMore]);
 
   // 事件委托处理函数，绑定在父容器 columns 上，处理每张卡片点击跳转
   const handleClickNavigate = (e) => {

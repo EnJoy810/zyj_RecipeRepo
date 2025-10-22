@@ -47,8 +47,8 @@ export const chat = async (
               const content = parsed.choices[0]?.delta?.content || '';
               fullText += content;
               onStream(fullText); // 调用回调函数
-            } catch (err) {
-              console.error('解析流数据错误:', err);
+            } catch {
+              console.error('解析流数据错误');
             }
           }
         }
@@ -72,7 +72,7 @@ export const chat = async (
         },
       };
     }
-  } catch (err) {
+  } catch {
     return {
       code: 0,
       msg: "出错了...",

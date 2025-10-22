@@ -23,7 +23,8 @@ const RecipeCard = (props) => {
 
     return () => {
       //unobserve 图片加载完成后，取消对图片的监听，防止内存泄漏
-      if (imgRef.current) observer.unobserve(imgRef.current);
+      const img = imgRef.current;
+      if (img) observer.unobserve(img);
     };
   }, []);
 

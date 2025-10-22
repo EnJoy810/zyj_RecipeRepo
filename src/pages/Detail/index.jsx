@@ -26,25 +26,25 @@ const Detail = () => {
 
   // 直接使用传递过来的数据
   const recipe = state?.recipe;
+  const { title, rating, url } = recipe || {};
+
+  // 检查当前食谱是否已收藏
+  const isInCookbook = cookbook.some((recipe) => recipe.id === id);
+
+  // 调用 setRecipeDetail 方法获取详情数据
+  useEffect(() => {
+    setRecipeDetail();
+  }, [setRecipeDetail]);
+
+  // 设置页面标题
+  useTitle(title || "菜谱详情");
+
   // 如果 state 中没有数据，可以在这里做降级处理
   if (!recipe) {
     Toast.fail("数据加载失败");
     navigate("/");
     return;
   }
-  const { title, rating, url } = recipe;
-  // 检查当前食谱是否已收藏
-  const isInCookbook = cookbook.some((recipe) => recipe.id === id);
-  
-  // 调用 setRecipeDetail 方法获取详情数据
-  useEffect(() => {
-    setRecipeDetail();
-  }, []);
-  
-  // 监听详情数据变化，更新页面标题
-  useEffect(() => {
-    useTitle(title);
-  }, [title]);
 
   // 点击返回按钮
   const handleClickBack = () => {

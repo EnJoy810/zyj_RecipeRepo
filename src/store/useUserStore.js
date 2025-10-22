@@ -5,7 +5,7 @@ import { persist } from "zustand/middleware"; // 导入持久化中间件
 
 const useUserStore = create(
   persist(
-    (set, get) => ({
+    (set) => ({
       user: null, // 用户信息
       isLogin: false, // 是否登录
       login: async ({ username = "", password = "" }) => {

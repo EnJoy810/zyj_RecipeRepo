@@ -10,7 +10,7 @@ export default [
     url: "/api/login",
     method: "post",
     timeout: 1000, // 请求耗时
-    response: (req, res) => {
+    response: (req) => {
       const { username, password } = req.body;
       if (username !== "admin" || password !== "123") {
         return {
@@ -46,7 +46,7 @@ export default [
   {
     url: "/api/user",
     method: "get",
-    response: (req, res) => {
+    response: (req) => {
       // 用户端 token headers
       const token = req.headers["authorization"].split(" ")[1]; // 从请求头中获取token
       try {
@@ -57,7 +57,7 @@ export default [
           message: "success",
           data: decode.user,
         };
-      } catch (err) {
+      } catch {
         return {
           code: 1,
           message: "token 错误",
