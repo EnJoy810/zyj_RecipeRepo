@@ -2,11 +2,11 @@ import axios from 'axios'
 
 // 根据环境配置baseURL
 const getBaseURL = () => {
-  // 开发环境使用本地Mock服务
+  // 开发环境使用Vite的Mock服务
   if (import.meta.env.DEV) {
     return "http://localhost:5173/api"
   }
-  // 生产环境使用相对路径，自动请求当前域名下的API
+  // 生产环境使用相对路径，Service Worker 会拦截这些请求
   return "/api"
 }
 
