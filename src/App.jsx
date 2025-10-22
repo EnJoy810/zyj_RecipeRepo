@@ -27,22 +27,30 @@ function App() {
     <>
       <Suspense fallback={<Loading />}>
         <Routes>
-          <Route element={<AuthGuard />}>
-            <Route element={<MainLayout />}>
-              <Route path="/" element={<Navigate to="/discover" />} />
-              <Route path="/discover" element={<Discover />} />
+          {/* MainLayout 包含所有带底部导航的页面 */}
+          <Route element={<MainLayout />}>
+            {/* 公开页面 - 无需登录 */}
+            <Route path="/" element={<Navigate to="/discover" />} />
+            <Route path="/discover" element={<Discover />} />
+            <Route path="/cookbook" element={<Cookbook />} />
+            
+            {/* 需要登录的页面 - 使用 AuthGuard 保护 */}
+            <Route element={<AuthGuard />}>
               <Route path="/chat" element={<Chat />} />
-              <Route path="/cookbook" element={<Cookbook />} /> 
               <Route path="/account" element={<Account />} />
             </Route>
           </Route>
+          
+          {/* BlankLayout 包含无底部导航的页面 - 全部公开 */}
           <Route element={<BlankLayout />}>
             <Route path="/login" element={<Login />} />
             <Route path="/search" element={<Search />} />
             <Route path="/detail/:id" element={<Detail />} />
             <Route path="/steps" element={<RecipeContent />} /> 
           </Route>
-          <Route path="*" element={isLogin ? <Navigate to="/discover" replace /> : <Navigate to="/login" replace />} />
+          
+          {/* 404 处理 */}
+          <Route path="*" element={<Navigate to="/discover" replace />} />
         </Routes>
       </Suspense>
     </>

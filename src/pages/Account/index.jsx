@@ -2,6 +2,7 @@ import useTitle from "@/hooks/useTitle";
 import useAccountStore from "@/store/useAccountStore";
 import useUserStore from "@/store/useUserStore";
 import { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Image,
   Cell,
@@ -21,6 +22,7 @@ const Account = () => {
   const [showActionSheet, setShowActionSheet] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
   const fileInputRef = useRef(null);
+  const navigate = useNavigate();
   const { logout } = useUserStore();
   const actions = [
     {
@@ -101,7 +103,13 @@ const Account = () => {
       title: "确认退出登录吗？",
     })
       .then(() => {
-        logout();
+        // 先跳转到首页，再执行登出操作
+        navigate('/discover', { replace: true });
+        // 延迟执行登出，确保导航完成
+        setTimeout(() => {
+          logout();
+          Toast.success("已退出登录");
+        }, 100);
       })
       .catch(() => {
         // on cancel
@@ -129,10 +137,9 @@ const Account = () => {
       <div className={styles.user}>
         <Image
           round
-          width="64px"
-          height="64px"
+          className={styles.avatar}
           src={avatar}
-          style={{ cursor: "pointer", marginRight: 16 }}
+          style={{ cursor: "pointer" }}
           onClick={handleClickAvatar}
         />
         <div className={styles.ml4}>
@@ -158,14 +165,9 @@ const Account = () => {
       <div className={styles.mt3} onClick={handleClickCell}>
         <CellGroup inset>
           <Cell title="我的收藏" icon={<StarO />} isLink />
-        </CellGroup>
-        <CellGroup inset className={styles.mt2}>
           <Cell title="美食圈" icon={<FriendsO />} isLink />
           <Cell title="烹饪历史" icon={<ClockO />} isLink />
           <Cell title="福利中心" icon={<GiftO />} isLink />
-        </CellGroup>
-
-        <CellGroup inset className={styles.mt2}>
           <Cell title="设置" icon={<SettingO />} isLink />
         </CellGroup>
       </div>

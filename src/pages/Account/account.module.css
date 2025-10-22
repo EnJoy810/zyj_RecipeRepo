@@ -1,83 +1,111 @@
+/* ========== 我的页面样式 ========== */
+
 .container {
   height: 100%;
 }
+
+/* 用户信息区域 */
 .user {
   background-color: #fff8e1;
-  padding: 20px 16px;
+  padding: 0.27rem 0.21rem; /* 20px 16px */
   display: flex;
   align-items: center;
-  margin-bottom: 70px;
+  margin-bottom: 0.93rem; /* 70px */
 }
+
+/* 响应式头像 */
+.avatar {
+  width: 0.85rem !important; /* 64px */
+  height: 0.85rem !important; /* 64px */
+  flex-shrink: 0;
+  margin-right: 0.21rem !important; /* 16px */
+}
+
+/* 用户昵称 */
 .nickname {
-  font-size: 36px;
+  font-size: 0.48rem; /* 36px */
   font-weight: 500;
-  color: #FF8F00; /* 美团橙色，与背景形成舒适对比 */
+  color: #FF8F00;
 }
 
+/* 用户等级 */
 .level {
-  font-size: 28px;
-  color: #FFA000; /* 美团黄橙色，比昵称浅一个层次 */
-  margin-top: 8px;
+  font-size: 0.37rem; /* 28px */
+  color: #FFA000;
+  margin-top: 0.11rem; /* 8px */
 }
 
+/* 用户签名 */
 .slogan {
-  font-size: 24px;
-  color: #FFD100; /* 美团黄色，保持可读性同时弱化显示 */
-  margin-top: 8px;
+  font-size: 0.32rem; /* 24px */
+  color: #FFD100;
+  margin-top: 0.11rem; /* 8px */
 }
 
-.mt2 {
-  margin-top: 8px;
-}
-.mt3 {
-  margin-top: 12px;
-}
-
-.ml2 {
-    width: 686px;
-    height: 200px;
-    background-color: white;
-    border-radius: 20px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin: 30px;
-    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.1);
-}
-.ml1 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-}
-.ml1 span {
-    font-size: 24px;
-    color: #FFD100;
-}
-.ml1 span:first-child {
-    font-size: 50px;
-    color: #FF8F00;
-    font-weight: 500;
-    margin-bottom: 12px;
-}
-
+/* 头像右侧间距 */
 .ml4 {
-  margin-left: 16px;
+  margin-left: 0.21rem; /* 16px */
 }
 
+/* 通用间距 */
+.mt2 {
+  margin-top: 0.11rem; /* 8px */
+}
+
+.mt3 {
+  margin-top: 0.16rem; /* 12px */
+}
+
+/* 统计数据卡片 - 与 CellGroup 保持一致的样式 */
+.ml2 {
+  width: calc(100% - 0.8rem); /* 与 CellGroup 相同的左右边距 */
+  height: 2.67rem; /* 200px */
+  background-color: white;
+  border-radius: 0.21rem; /* 16px 圆角，与 CellGroup 一致 */
+  display: flex;
+  justify-content: space-evenly; /* 三个元素等间距分布 */
+  align-items: center;
+  margin: 0.4rem 0.4rem; /* 30px 左右边距，与 CellGroup 对齐 */
+  box-shadow: 0 0.03rem 0.1rem rgba(0, 0, 0, 0.08); /* 与 CellGroup 相似的阴影 */
+}
+
+/* 统计数据项 */
+.ml1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.ml1 span {
+  font-size: 0.32rem; /* 24px */
+  color: #FFD100;
+}
+
+.ml1 span:first-child {
+  font-size: 0.67rem; /* 50px */
+  color: #FF8F00;
+  font-weight: 500;
+  margin-bottom: 0.16rem; /* 12px */
+}
+
+/* 退出登录按钮 */
 .button {
-    width: 686px;
-    margin: 60px 30px 0px 30px;
-    border-radius: 15px;
-    font-size: 35px;
+  width: calc(100% - 0.8rem);
+  margin: 0.8rem 0.4rem 0; /* 60px，与CellGroup左右边距对齐 */
+  border-radius: 0.2rem; /* 15px */
+  font-size: 0.47rem; /* 35px */
 }
 
+/* 主题切换按钮 */
 .themeToggle {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 0.27rem; /* 20px */
+  right: 0.27rem; /* 20px */
   z-index: 1;
 }
+
+/* ========== 暗黑主题样式 ========== */
 
 /* 强制所有字体变为白色 */
 :global(.dark) * {
@@ -89,15 +117,14 @@
   background-color: var(--background-color) !important;
 }
 
-
 :global(.dark) .user,
 :global(.dark) .ml4,
 :global(.dark) .ml2,
-:global(.dark) .nickname ,
+:global(.dark) .nickname,
 :global(.dark) .level,
 :global(.dark) .slogan,
 :global(.dark) .ml1,
-:global(.dark) .ml1 span{
+:global(.dark) .ml1 span {
   background-color: #323131ff !important;
 }
 
@@ -120,4 +147,239 @@
   background-color: #323131ff !important;
 }
 
+/* ========== 覆盖 react-vant CellGroup 的 inset 样式 ========== */
 
+/* 覆盖默认的 inset 边距，使其响应式 */
+.container :global(.rv-cell-group--inset) {
+  margin: 0 0.4rem !important; /* 30px 左右边距 */
+}
+
+.mt3 :global(.rv-cell-group--inset) {
+  border-radius: 0.21rem !important; /* 16px 圆角 */
+}
+
+/* ========== 响应式设计 ========== */
+
+/* 平板设备 (768px - 1024px) */
+@media (max-width: 1024px) {
+  .ml2 {
+    width: calc(100% - 0.67rem); /* 与 CellGroup 同步 */
+    height: 2.4rem; /* 180px */
+    margin: 0.4rem 0.33rem; /* 与 CellGroup 对齐 */
+  }
+  
+  /* CellGroup 边距 */
+  .container :global(.rv-cell-group--inset) {
+    margin: 0 0.33rem !important; /* 25px */
+  }
+  
+  .button {
+    width: calc(100% - 0.67rem);
+    margin: 0.8rem 0.33rem 0; /* 与CellGroup对齐 */
+  }
+}
+
+/* 大屏手机 / 小平板 (480px - 768px) */
+@media (max-width: 768px) {
+  .user {
+    padding: 0.27rem 0.16rem;
+    margin-bottom: 0.67rem; /* 50px */
+  }
+  
+  .avatar {
+    width: 0.75rem !important; /* 56px */
+    height: 0.75rem !important;
+    margin-right: 0.16rem !important;
+  }
+  
+  .nickname {
+    font-size: 0.43rem; /* 32px */
+  }
+  
+  .level {
+    font-size: 0.32rem; /* 24px */
+  }
+  
+  .slogan {
+    font-size: 0.27rem; /* 20px */
+  }
+  
+  .ml2 {
+    width: calc(100% - 0.53rem); /* 与 CellGroup 同步 */
+    height: 2.13rem; /* 160px */
+    margin: 0.32rem 0.27rem; /* 20px 左右边距，与 CellGroup 对齐 */
+  }
+  
+  .ml1 span {
+    font-size: 0.27rem; /* 20px */
+  }
+  
+  .ml1 span:first-child {
+    font-size: 0.53rem; /* 40px */
+    margin-bottom: 0.11rem; /* 8px */
+  }
+  
+  /* CellGroup 边距 */
+  .container :global(.rv-cell-group--inset) {
+    margin: 0 0.27rem !important; /* 20px */
+  }
+  
+  .button {
+    width: calc(100% - 0.53rem);
+    margin: 0.67rem 0.27rem 0; /* 50px，与CellGroup对齐 */
+    font-size: 0.4rem; /* 30px */
+  }
+}
+
+/* 中等手机 (375px - 480px) */
+@media (max-width: 480px) {
+  .user {
+    padding: 0.21rem 0.13rem;
+    margin-bottom: 0.53rem; /* 40px */
+  }
+  
+  .avatar {
+    width: 0.64rem !important; /* 48px */
+    height: 0.64rem !important;
+    margin-right: 0.13rem !important;
+  }
+  
+  .nickname {
+    font-size: 0.37rem; /* 28px */
+  }
+  
+  .level {
+    font-size: 0.27rem; /* 20px */
+  }
+  
+  .slogan {
+    font-size: 0.24rem; /* 18px */
+  }
+  
+  .ml4 {
+    margin-left: 0.13rem; /* 10px */
+  }
+  
+  .ml2 {
+    width: calc(100% - 0.4rem); /* 与 CellGroup 同步 */
+    height: 1.87rem; /* 140px */
+    margin: 0.27rem 0.21rem; /* 16px 左右边距，与 CellGroup 对齐 */
+    border-radius: 0.19rem; /* 14px 圆角 */
+  }
+  
+  .ml1 span {
+    font-size: 0.24rem; /* 18px */
+  }
+  
+  .ml1 span:first-child {
+    font-size: 0.48rem; /* 36px */
+    margin-bottom: 0.08rem; /* 6px */
+  }
+  
+  /* CellGroup 边距 */
+  .container :global(.rv-cell-group--inset) {
+    margin: 0 0.21rem !important; /* 16px */
+    border-radius: 0.19rem !important; /* 14px */
+  }
+  
+  .button {
+    width: calc(100% - 0.4rem);
+    margin: 0.53rem 0.21rem 0; /* 40px，与CellGroup对齐 */
+    font-size: 0.35rem; /* 26px */
+    border-radius: 0.16rem; /* 12px */
+  }
+  
+  .themeToggle {
+    top: 0.21rem; /* 16px */
+    right: 0.21rem; /* 16px */
+  }
+}
+
+/* 小屏手机 (320px - 375px) */
+@media (max-width: 375px) {
+  .user {
+    padding: 0.19rem 0.11rem;
+    margin-bottom: 0.4rem; /* 30px */
+  }
+  
+  .avatar {
+    width: 0.53rem !important; /* 40px */
+    height: 0.53rem !important;
+    margin-right: 0.11rem !important;
+  }
+  
+  .nickname {
+    font-size: 0.32rem; /* 24px */
+  }
+  
+  .level {
+    font-size: 0.24rem; /* 18px */
+  }
+  
+  .slogan {
+    font-size: 0.21rem; /* 16px */
+  }
+  
+  .ml2 {
+    width: calc(100% - 0.32rem); /* 与 CellGroup 同步 */
+    height: 1.6rem; /* 120px */
+    margin: 0.21rem 0.16rem; /* 12px 左右边距，与 CellGroup 对齐 */
+    border-radius: 0.16rem; /* 12px 圆角 */
+  }
+  
+  .ml1 span {
+    font-size: 0.21rem; /* 16px */
+  }
+  
+  .ml1 span:first-child {
+    font-size: 0.4rem; /* 30px */
+  }
+  
+  /* CellGroup 边距 */
+  .container :global(.rv-cell-group--inset) {
+    margin: 0 0.16rem !important; /* 12px */
+    border-radius: 0.16rem !important; /* 12px */
+  }
+  
+  .button {
+    width: calc(100% - 0.32rem);
+    margin: 0.4rem 0.16rem 0; /* 30px，与CellGroup对齐 */
+    font-size: 0.32rem; /* 24px */
+  }
+  
+  .themeToggle {
+    top: 0.16rem; /* 12px */
+    right: 0.16rem; /* 12px */
+  }
+}
+
+/* 超小屏手机 (< 320px) */
+@media (max-width: 320px) {
+  .avatar {
+    width: 0.48rem !important; /* 36px */
+    height: 0.48rem !important;
+  }
+  
+  .ml2 {
+    width: calc(100% - 0.27rem); /* 与 CellGroup 同步 */
+    height: 1.47rem; /* 110px */
+    margin: 0.19rem 0.13rem; /* 10px 左右边距，与 CellGroup 对齐 */
+    border-radius: 0.13rem; /* 10px 圆角 */
+  }
+  
+  .ml1 span:first-child {
+    font-size: 0.37rem; /* 28px */
+  }
+  
+  /* CellGroup 边距 */
+  .container :global(.rv-cell-group--inset) {
+    margin: 0 0.13rem !important; /* 10px */
+    border-radius: 0.13rem !important; /* 10px */
+  }
+  
+  .button {
+    width: calc(100% - 0.27rem);
+    margin: 0.35rem 0.13rem 0; /* 与CellGroup对齐 */
+    font-size: 0.29rem; /* 22px */
+  }
+}
