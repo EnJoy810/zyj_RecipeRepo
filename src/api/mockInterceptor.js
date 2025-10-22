@@ -28,7 +28,7 @@ function decodeJWT(token) {
 
 // Mock API 响应
 const mockResponses = {
-  'POST:/api/login': (data) => {
+  'POST:/login': (data) => {
     const { username, password } = data;
     console.log('[Mock Interceptor] Login attempt:', { username, password });
 
@@ -51,7 +51,7 @@ const mockResponses = {
     };
   },
 
-  'GET:/api/user': (data, headers) => {
+  'GET:/user': (data, headers) => {
     const authHeader = headers.Authorization;
     console.log('[Mock Interceptor] User info request, auth:', authHeader);
 
@@ -79,7 +79,7 @@ const mockResponses = {
     };
   },
 
-  'GET:/api/search': (data, headers, params) => {
+  'GET:/search': (data, headers, params) => {
     const keyword = params?.keyword || '';
     console.log('[Mock Interceptor] Search for:', keyword);
 
